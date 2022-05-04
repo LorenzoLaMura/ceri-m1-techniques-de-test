@@ -1,15 +1,20 @@
 package fr.univavignon.pokedex.api;
 
-import junit.framework.TestCase;
+import org.mockito.Mockito;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
-public class IPokemonTrainerFactoryTest extends TestCase {
-
-	public IPokemonTrainerFactoryTest(String name) {
-		super(name);
-	}
+public class IPokemonTrainerFactoryTest {
 	
-	public void testApp() {
-		assertTrue(true);
+	@Test
+	public void testCreateTrainer() {
+		IPokedex iPokedexMock = Mockito.mock(IPokedex.class);
+		IPokedexFactory iPokedexFactoryMock = Mockito.mock(IPokedexFactory.class);
+		IPokemonTrainerFactory iPokemonTrainerFactoryMock = Mockito.mock(IPokemonTrainerFactory.class);
+		PokemonTrainer pokemonTrainer = new PokemonTrainer("Lorenzo", Team.INSTINCT, iPokedexMock);
+		when(iPokemonTrainerFactoryMock.createTrainer("Lorenzo", Team.INSTINCT, iPokedexFactoryMock)).thenReturn(pokemonTrainer);
+		assertEquals(pokemonTrainer, iPokemonTrainerFactoryMock.createTrainer("Lorenzo", Team.INSTINCT, iPokedexFactoryMock));
 	}
 
 }
