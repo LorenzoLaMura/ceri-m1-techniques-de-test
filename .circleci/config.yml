@@ -17,6 +17,9 @@ jobs:
           name: Test
           command: mvn test
       - codecov/upload
+      - run:
+          name: CheckStyle
+          command: mvn checkstyle:checkstyle
 
 workflows:
   sample:
