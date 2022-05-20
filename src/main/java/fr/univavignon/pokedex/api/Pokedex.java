@@ -9,13 +9,13 @@ public class Pokedex implements IPokedex{
 
 	IPokemonMetadataProvider metadataProvider;
 	IPokemonFactory pokemonFactory;
-	public static List<Pokemon> listePokemons = new ArrayList<Pokemon>();
+	public static List<Pokemon> pokemons = new ArrayList<Pokemon>();
 
 	public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
 		this.metadataProvider = metadataProvider;
 		this.pokemonFactory = pokemonFactory;
-		listePokemons.add(new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56));
-		listePokemons.add(new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100));
+		pokemons.add(new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56));
+		pokemons.add(new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100));
 	}
 
 	@Override
@@ -30,29 +30,29 @@ public class Pokedex implements IPokedex{
 
 	@Override
 	public int size() {
-		return listePokemons.size();
+		return pokemons.size();
 	}
 
 	@Override
 	public int addPokemon(Pokemon pokemon) {
-		listePokemons.add(pokemon);
+		pokemons.add(pokemon);
 		return pokemon.getIndex();
 	}
 
 	@Override
 	public Pokemon getPokemon(int id) throws PokedexException {
-		return listePokemons.get(id);
+		return pokemons.get(id);
 	}
 
 	@Override
 	public List<Pokemon> getPokemons() {
-		return listePokemons;
+		return pokemons;
 	}
 
 	@Override
 	public List<Pokemon> getPokemons(Comparator<Pokemon> order) {
-		Collections.sort(listePokemons, order);
-		return listePokemons;
+		Collections.sort(pokemons, order);
+		return pokemons;
 	}
 
 } 
